@@ -8,6 +8,7 @@ import {
     getFilesFromFolder
 } from '../actions/memesearch';
 import MemePreview from './MemePreview';
+import bulma from 'bulma/css/bulma.css';
 
 type Props = {};
 
@@ -31,7 +32,7 @@ export default class MemeSearch extends Component<Props> {
 
     renderMemePreviews() {
         const exp = /.*(.jpg|.png)$/;
-        const width: number = 150;
+        const width: number = 96;
         const height: number = width;
         const files = getFilesFromFolder(this.props.memesFolder);
         let previews = files
@@ -46,10 +47,13 @@ export default class MemeSearch extends Component<Props> {
     }
 
     renderSetMemesFolderButton() {
-
         return (
             <div>
-                <button onClick={this.handleSetMemesClicked}>Set memes folder</button>
+                <button onClick={this.handleSetMemesClicked}
+                        className={bulma.button}
+                        >
+                    Set memes folder
+                </button>
             </div>
         );
     }
@@ -62,8 +66,10 @@ export default class MemeSearch extends Component<Props> {
                     Home
                    </Link>
                 </div>
-                <div>
-                    <h1>Search</h1>
+                <div className={"border-black"}>
+                    <p className={"text-5xl text-grey"}>
+                        Search
+                    </p>
                 </div>
                 <div>
                     {this.renderSetMemesFolderButton()}
