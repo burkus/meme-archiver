@@ -1,37 +1,42 @@
 // @flow
-import {GetState, Dispatch} from '..reducers/types';
+import {GetState, Dispatch} from '../reducers/types';
 const {dialog} = require('electron').remote;
 const fs = require('fs');
 
 export const GET_MEMES = "GET_MEMES";
 export const SET_MEMES_FOLDER = "SET_MEMES_FOLDER";
 
-export function getMemes() {
+export function getMemes(memes: []) {
     return {
         type: GET_MEMES,
         memes
-    }
+    };
 }
 
 export function setMemesFolder(path: string) {
     return {
         type: SET_MEMES_FOLDER,
         path
-    }
+    };
 }
 
 export function showDialogForMemesFolder() {
-    let fileName = null;
-    dialog.showOpenDialog({
+    // <input type="file"
+    // webkitdirectory />
+    let fileName = dialog.showOpenDialog({
         title: "Select a folder",
         properties: ["openDirectory"]
-    }, fn => {
-        fileName = fn;
     });
-    return fileName;
+    return fileName[0];
 }
 
-export function getMemesFromFolder(path: string) {
-    const files = fs.readdirSync(path);
+export function getFilesFromFolder(path: string) {
+    let files = [];
+    try {
+        files = fs.readdirSync(path);
+    } catch(error) {
+        console.log(error);
+    }
+    files = files.map(f => path + '/' + f);
     return files;
 }

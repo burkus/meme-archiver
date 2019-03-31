@@ -10,7 +10,7 @@ export function memes(state: [] = [], action: Action) {
     }
 }
 
-export function memesFolder(state: string, action: Action) {
+export function memesFolder(state: string = "", action: Action) {
     switch(action.type) {
         case SET_MEMES_FOLDER:
             return state = action.path;
