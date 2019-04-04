@@ -25,8 +25,7 @@ export default class MemeSearch extends Component<Props> {
     }
 
     handleSetMemesClicked() {
-        let folderName = showDialogForMemesFolder();
-        console.log(folderName);
+        const folderName = showDialogForMemesFolder();
         this.props.setMemesFolder(folderName);
     }
 
@@ -48,7 +47,7 @@ export default class MemeSearch extends Component<Props> {
 
     renderSetMemesFolderButton() {
         return (
-            <div>
+            <div className={styles.setMemesFolder}>
                 <button onClick={this.handleSetMemesClicked}
                         className={bulma.button}
                         >
@@ -61,23 +60,25 @@ export default class MemeSearch extends Component<Props> {
     render() {
         return(
             <div>
-                <div className={styles.backButton} data-tid="backButton">
-                   <Link to={routes.HOME}>
+                <div className={styles.backButton}>
+                   <Link to={routes.HOME} className={bulma.button}>
                     Home
                    </Link>
                 </div>
-                <div className={"border-black"}>
-                    <p className={"text-5xl text-grey"}>
-                        Search
-                    </p>
-                </div>
-                <div>
-                    {this.renderSetMemesFolderButton()}
-                </div>
-                <div>
-                    {this.renderMemePreviews()}
+                {this.renderSetMemesFolderButton()}
+                <div className={styles.container}>
+                    <div>
+                        <h1 className={styles.title}>
+                            Meme Search
+                        </h1>
+                    </div>
+                    <div>
+                        {this.renderMemePreviews()}
+                    </div>
+                    
                 </div>
             </div>
+            
         );
     }
 }
