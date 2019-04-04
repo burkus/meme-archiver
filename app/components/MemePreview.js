@@ -19,6 +19,12 @@ function processName(name: string) {
         return 'Name could not be found';
     }
 
+    const fileExt = name.lastIndexOf('.');
+
+    if(fileExt !== -1) {
+        return name.substring(last + 1, fileExt);
+    }
+   
     return name.substr(last + 1);
 }
 
