@@ -5,7 +5,7 @@ import routes from '../constants/routes';
 import styles from './MemeSearch.css';
 import {
     showDialogForMemesFolder,
-    getFilesFromFolder
+    getFilesFromFolder 
 } from '../actions/memesearch';
 import MemePreview from './MemePreview';
 import bulma from 'bulma/css/bulma.css';
@@ -30,14 +30,20 @@ export default class MemeSearch extends Component<Props> {
     }
 
     renderMemePreviews() {
-        const exp = /.*(.jpg|.png)$/;
+        const exp = /.*(.jpg|.png|.gif)$/;
         const width: number = 96;
         const height: number = width;
         const files = getFilesFromFolder(this.props.memesFolder);
         let previews = files
                 .filter(e => exp.exec(e))
                 .map((file, i) => 
-            <MemePreview src={file} width={width} height={height} key={i}/>);
+                    <MemePreview
+                        src={file}
+                        width={width}
+                        height={height} 
+                        name={file}
+                        key={i}
+                    />);
         return (
             <div className={styles.memePreviewContainer}>
                 {previews}
@@ -71,7 +77,7 @@ export default class MemeSearch extends Component<Props> {
                         <h1 className={styles.title}>
                             Meme Search
                         </h1>
-                        
+
                     </div>
                     <div>
                         {this.renderMemePreviews()}

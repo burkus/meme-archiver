@@ -6,7 +6,7 @@
 }
 
 .title {
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 }
 
 .backButton {
@@ -27,9 +27,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-* {
-  text-align: center;
-  align-content: center;
+  overflow: auto;
+  width: 77vw;
+  height: 55vh;
 }
