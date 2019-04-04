@@ -1,6 +1,6 @@
 # Meme Archiver
 
-![honk honk](https://github.com/burkus/meme-archiver/blob/master/-pol-/peepo_honk.png?raw=true)
+![honk honk](https://github.com/burkus/meme-archiver/blob/master/pepes/poggers.jpg?raw=true)
 
 ## A place for memes
 
