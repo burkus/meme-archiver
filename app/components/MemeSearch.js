@@ -66,11 +66,12 @@ export default class MemeSearch extends Component<Props> {
                    </Link>
                 </div>
                 {this.renderSetMemesFolderButton()}
-                <div className={styles.container}>
+                <div className={bulma.box, styles.container}>
                     <div>
                         <h1 className={styles.title}>
                             Meme Search
                         </h1>
+                        
                     </div>
                     <div>
                         {this.renderMemePreviews()}
