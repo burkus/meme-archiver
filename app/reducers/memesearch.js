@@ -4,7 +4,7 @@ import {Action} from './types';
 export function memes(state: [] = [], action: Action) {
     switch(action.type) {
         case GET_MEMES:
-            return state.concat(action.memes);
+            return state = action.memes;
         default:
             return state;
     }

@@ -1,13 +1,10 @@
 .container {
   position: absolute;
-  top: 10%;
+  top: 5%;
   margin-right: auto;
   margin-left: 10%;
 }
 
-.title {
-  margin-bottom: 5%;
-}
 
 .backButton {
   margin-left: 1%;
@@ -25,9 +22,15 @@
 
 .memePreviewContainer {
   display: flex;
+  top: 5%;
   flex-direction: column;
   justify-content: center;
-  overflow: auto;
+  overflow: scroll;
+  overflow-y: scroll;
   width: 77vw;
-  height: 55vh;
+  height: 87vh;
+}
+
+.s {
+    overflow-y: scroll;
 }

@@ -13,10 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-.backgroundColored {
-  background-color: #232c39;
-}
-
 ::-webkit-scrollbar {
   display: none;
 }
