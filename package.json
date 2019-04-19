@@ -256,7 +256,6 @@
     "@fortawesome/fontawesome-free": "^5.5.0",
     "bloomer": "^0.6.5",
     "bulma": "^0.7.4",
-    "clipboard": "^2.0.4",
     "connected-react-router": "^5.0.1",
     "devtron": "^1.4.0",
     "electron-debug": "^2.0.0",
