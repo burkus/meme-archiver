@@ -9,25 +9,6 @@ type Props = {
     name: string
 };
 
-function processName(name: string) {
-    let last = name.lastIndexOf('/');
-    if(last === null) {
-        last = name.lastIndexOf('\\');
-    }
-
-    if(last === -1) {
-        return 'Name could not be found';
-    }
-
-    const fileExt = name.lastIndexOf('.');
-
-    if(fileExt !== -1) {
-        return name.substring(last + 1, fileExt);
-    }
-   
-    return name.substr(last + 1);
-}
-
 export default function MemePreview (props: Props) {
     const {src, width, height} = props;
     return (
@@ -37,7 +18,7 @@ export default function MemePreview (props: Props) {
                 <img src={src} width={width} height={height} alt={"whoops, couldn't load"}></img>
             </figure>
             <div className={bulma['level-right']}>
-                    <p>{processName(props.name)}</p>
+                    <p>{props.name}</p>
                 </div>
             </div>
         </div>

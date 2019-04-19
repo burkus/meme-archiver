@@ -47,7 +47,6 @@
 
 .memeSearchBar {
   margin-top: 2%;
-  margin-right: 20%;
   border: 5px solid white;
   border-radius: 5px;
   padding: 0px;
@@ -55,7 +54,7 @@
 }
 
 i {
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 .s {

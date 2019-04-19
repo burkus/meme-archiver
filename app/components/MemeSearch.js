@@ -5,9 +5,11 @@ import routes from '../constants/routes';
 import styles from './MemeSearch.css';
 import {
     showDialogForMemesFolder,
-    getFilesFromFolder
+    getFilesFromFolder,
+    createPrefixComparatorFromString
 } from '../actions/memesearch';
 import MemePreview from './MemePreview';
+import Meme from '../models/meme';
 import bulma from 'bulma/css/bulma.css';
 
 type Props = {};
@@ -36,49 +38,57 @@ export default class MemeSearch extends Component<Props> {
     getMemes(memesFolder: ?string) {
         const exp = /.*(.jpg|.png|.gif)$/;
         const folder = memesFolder != null ? memesFolder : this.props.memesFolder;
-        const files = getFilesFromFolder(folder)
-                        .filter(e => exp.exec(e));
-        this.props.getMemes(files);
+        const memes = getFilesFromFolder(folder)
+                        .filter(e => exp.exec(e))
+                        .map(e => new Meme(e));
+        this.props.getMemes(memes);
     }
 
     renderMemePreviews() {
         const width: number = 96;
         const height: number = width;
         const previews = this.props.memes
-                .map((file, i) => 
+                .map((meme, i) => 
                     <MemePreview
-                        src={file}
+                        src={meme.path}
                         width={width}
                         height={height} 
-                        name={file}
+                        name={meme.name}
                         key={i}
                     />);
         return (
             <div className={styles.memePreviewContainer}>
                 <div className={styles.s}>
-                {previews}
+                    {previews}
                 </div>
             </div>
         );
     }
 
-    handleSearchBarUpdate() {
+    searchMemesWithString(searchString: string) {
+        const comparator = createPrefixComparatorFromString(searchString, false);
+        this.props.sortMemes(comparator);
+    }
 
+    handleSearchBarUpdate(event) {
+        const searchString: string = event.target.value;
+        this.props.setSearchString(searchString);
+        this.searchMemesWithString(searchString);
     }
 
     renderSearchBar() {
         return (
             <div className={styles.memeSearchContainer}>
-                <i className={"fas fa-search fa-3x"}/>
+                <i className={"fas fa-search fa-2x"}/>
                 <div>
                     <div className={styles.memeSearchInput}>
-                    <input
-                        className={styles.memeSearchBar}
-                        type={"text"}
-                        placeholder={""}
-                        onChange={this.handleSearchBarUpdate}
-                        autoFocus={true}
-                        >
+                        <input
+                            className={styles.memeSearchBar}
+                            type={"text"}
+                            placeholder={""}
+                            onChange={this.handleSearchBarUpdate}
+                            autoFocus={true}
+                            >
                         </input>
                     </div>
                 </div>
@@ -114,10 +124,8 @@ export default class MemeSearch extends Component<Props> {
                     <div>
                         {this.renderMemePreviews()}
                     </div>
-                    
                 </div>
             </div>
-            
         );
     }
 }
