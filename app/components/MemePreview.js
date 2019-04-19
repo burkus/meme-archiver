@@ -33,8 +33,8 @@ export default function MemePreview (props: Props) {
     return (
         <div className={bulma.box}>
             <div className={bulma.level}>
-            <figure className={bulma.image, bulma['level-item'], bulma['level-left']}>
-                <img src={src} width={width} height={height}></img>
+            <figure className={bulma['level-item'], bulma['level-left']}>
+                <img src={src} width={width} height={height} alt={"whoops, couldn't load"}></img>
             </figure>
             <div className={bulma['level-right']}>
                     <p>{processName(props.name)}</p>

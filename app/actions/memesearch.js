@@ -5,6 +5,15 @@ const fs = require('fs');
 
 export const GET_MEMES = "GET_MEMES";
 export const SET_MEMES_FOLDER = "SET_MEMES_FOLDER";
+export const SET_SEARCH_STRING = "SET_SEARCH_STRING";
+
+
+export function setSearchString(search: string) {
+    return {
+        type: SET_SEARCH_STRING,
+        search
+    };
+}
 
 export function getMemes(memes: Array<string>) {
     return {

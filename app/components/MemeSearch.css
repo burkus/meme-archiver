@@ -5,7 +5,6 @@
   margin-left: 10%;
 }
 
-
 .backButton {
   margin-left: 1%;
   margin-top: 1%;
@@ -29,6 +28,34 @@
   overflow-y: scroll;
   width: 77vw;
   height: 87vh;
+}
+
+.memeSearchContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.memeSearchTitle {
+  float: left;
+}
+
+.memeSearchInput {
+  margin-left: 2%;
+}
+
+.memeSearchBar {
+  margin-top: 2%;
+  margin-right: 20%;
+  border: 5px solid white;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: 2.25rem;
+}
+
+i {
+  margin-top: 7px;
 }
 
 .s {

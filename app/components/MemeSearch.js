@@ -19,6 +19,7 @@ export default class MemeSearch extends Component<Props> {
         super(props);
         this.handleSetMemesClicked = this.handleSetMemesClicked.bind(this);
         this.getMemes = this.getMemes.bind(this);
+        this.handleSearchBarUpdate = this.handleSearchBarUpdate.bind(this);
     }
 
     componentWillMount() {
@@ -61,6 +62,30 @@ export default class MemeSearch extends Component<Props> {
         );
     }
 
+    handleSearchBarUpdate() {
+
+    }
+
+    renderSearchBar() {
+        return (
+            <div className={styles.memeSearchContainer}>
+                <i className={"fas fa-search fa-3x"}/>
+                <div>
+                    <div className={styles.memeSearchInput}>
+                    <input
+                        className={styles.memeSearchBar}
+                        type={"text"}
+                        placeholder={""}
+                        onChange={this.handleSearchBarUpdate}
+                        autoFocus={true}
+                        >
+                        </input>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     renderSetMemesFolderButton() {
         return (
             <div className={styles.setMemesFolder}>
@@ -84,10 +109,7 @@ export default class MemeSearch extends Component<Props> {
                 {this.renderSetMemesFolderButton()}
                 <div className={bulma.box, styles.container}>
                     <div>
-                        <h1 className={styles.title}>
-                            Meme Search
-                        </h1>
-
+                        {this.renderSearchBar()}
                     </div>
                     <div>
                         {this.renderMemePreviews()}
