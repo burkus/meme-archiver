@@ -9,7 +9,7 @@ export const SET_MEMES_FOLDER = "SET_MEMES_FOLDER";
 export const SET_SEARCH_STRING = "SET_SEARCH_STRING";
 export const SORT_MEMES = "SORT_MEMES";
 
-export function sortMemes(sortExpression: function) {
+export function sortMemes(sortExpression) {
     return {
         type: SORT_MEMES,
         sortExpression
